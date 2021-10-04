@@ -1,3 +1,6 @@
+<?php
+require_once 'data.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,12 +27,15 @@
         <a href="/" title="nadiiaz blog">
             <img src="logo.png" alt="nadiiaz logo" width="200"/>
         </a>
-        <menu>
-            <li>Category 1</li>
-            <li>Category 2</li>
-            <li>Category 3</li>
-            <li>Category 4</li>
-        </menu>
+        <nav>
+            <ul>
+                <?php foreach (blogGetCategory() as $category) : ?>
+                    <li>
+                        <a href="/<?= $category['url']?>"><?= $category['name'] ?></a>
+                    </li>
+                <?php endforeach; ?>
+            </ul>
+        </nav>
     </header>
 
     <main>
