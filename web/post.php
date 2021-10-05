@@ -39,12 +39,12 @@ require_once 'data.php';
     </header>
 
     <main>
-        <img src="post-placeholder.png" alt="Post 1" width="300"/>
-        <h1>Post 1</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi cumque dolore eos exercitationem, impedit laudantium minima minus molestias quaerat quam, quidem repellendus sit temporibus veniam veritatis.</p>
+        <img src="post-placeholder.png" alt="<?= $data['name']?>" width="300"/>
+        <h1><?= $data['name']?></h1>
+        <p><?= $data['text']?></p>
         <div class="post">
-            <span>9.04.2022</span>
-            <p>Nadiia Zlobynets</p>
+            <p><?= $data['date']?></p>
+            <p><?= $data['author']?></p>
 
     </main>
 

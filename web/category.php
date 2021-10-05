@@ -39,33 +39,20 @@ require_once 'data.php';
     </header>
 
     <main>
-        <section title="Recently Viewed Posts">
-            <h2>Recently Viewed Posts</h2>
+        <section title="Posts">
+            <h1><?=  $data['name'] ?></h1>
             <div class="post-list">
-                <div class="post">
-                    <a href="/post-1-url" title="Post 1">
-                        <img src="/post-placeholder.png" alt="Post 1" width="200"/>
-                    </a>
-                    <a href="/post-1-url" title="Post 1">Post 1</a>
-                    <span>9.04.2022</span>
-                    <p>Nadiia Zlobynets</p>
-                </div>
-                <div class="post">
-                    <a href="/post-2-url" title="Post 2">
-                        <img src="/post-placeholder.png" alt="Post 2" width="200"/>
-                    </a>
-                    <a href="/post-2-url" title="Post 2">Post 2</a>
-                    <span>22.09.2022</span>
-                    <p>Nadiia Zlobynets</p>
-                </div>
-                <div class="post">
-                    <a href="/post-3-url" title="Post 3">
-                        <img src="/post-placeholder.png" alt="Post 3" width="200"/>
-                    </a>
-                    <a href="/post-3-url" title="Post 3">Post 3</a>
-                    <span>11.04.2022</span>
-                    <p>Nadiia Zlobynets</p>
-                </div>
+                <?php foreach (blogGetCategoryPost($data['category_id']) as $post) :  ?>
+                    <div class="post">
+                        <a href="/<?= $post['url'] ?>" title="<?= $post['name'] ?>">
+                            <img src="/post-placeholder.png" alt="<?= $post['name'] ?>" width="200"/>
+                        </a>
+                        <br>
+                        <a href="/<?= $post['url'] ?>" title="<?= $post['name'] ?>"><?= $post['name'] ?></a>
+                        <p><?= $post['date'] ?></p>
+                        <p><?= $post['author'] ?></p>
+                    </div>
+                <?php endforeach;?>
             </div>
         </section>
     </main>
