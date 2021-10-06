@@ -119,4 +119,3 @@ function blogGetPostByUrl(string $url)
     );
     return array_pop($data);
 }
-
