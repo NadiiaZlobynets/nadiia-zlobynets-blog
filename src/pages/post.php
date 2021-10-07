@@ -6,3 +6,4 @@
         <p><?= $data['date']?></p>
         <p><?= $data['author']?></p>
     </div>
+</div>
