@@ -10,9 +10,8 @@ class Page implements \Nadiiaz\Framework\Http\ControllerInterface
     {
         $page = 'home.php';
 
-
-      ob_start();
-      require_once "../src/page.php";
-      return ob_get_clean();
+        ob_start();
+        require_once "../src/page.php";
+        return ob_get_clean();
     }
 }

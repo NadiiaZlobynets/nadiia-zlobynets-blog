@@ -1,29 +1,3 @@
-<?php
-    require_once '../src/data.php';
-?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Nadiiaz Blog</title>
-    <style>
-        header,
-        main,
-        footer {
-            border: 1px dashed black;
-        }
-
-        .post-list {
-            display: flex;
-        }
-
-        .post-list .post {
-            max-width: 30%;
-        }
-    </style>
-</head>
-<body>
-       <main>
         <!-- @TODO: Implement recently viewed posts -->
         <section title="Recently Viewed Posts">
             <h2>Recently Viewed Posts</h2>
@@ -58,8 +32,3 @@
                 </div>
             </div>
         </section>
-    </main>
-
-
-</body>
-</html>
