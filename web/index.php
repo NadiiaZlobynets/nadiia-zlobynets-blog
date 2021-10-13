@@ -2,40 +2,21 @@
 
 declare(strict_types=1);
 
-require_once 'data.php';
+require_once '../vendor/autoload.php';
 
-$requestUri = trim($_SERVER['REQUEST_URI'],'/');
+$requestDispatcher = new \Nadiiaz\Framework\Http\RequestDispatcher([
+    new \Nadiiaz\Cms\Router(),
+    new \Nadiiaz\Blog\Router(),
+    new \Nadiiaz\ContactUs\Router(),
+]);
+$requestDispatcher->dispatch();
+
+
+exit;
 
 switch ($requestUri) {
-    case '':
-        $page = 'home.php';
-        break;
-    case 'contact-us':
-        $page = 'contact-us.php';
-        break;
     default:
-        if ($data = blogGetCategoryByUrl($requestUri)) {
-            $page = 'category.php';
-            break;
-        }
 
-        if ($data = blogGetPostByUrl($requestUri)) {
-            $page = 'post.php';
-            break;
-        }
 
         break;
 }
-if (!isset($page)) {
-    header("HTTP/1.0 404 Not Found");
-    exit(0);
-}
-
-header("Content-Type: text/html; charset=utf-8");
-
-ob_start();
-require_once  $page;
-echo ob_get_clean();
-
-
-require_once  $page;
