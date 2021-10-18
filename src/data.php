@@ -109,7 +109,7 @@ function blogGetCategoryByUrl(string $url)
     return array_pop($data);
 }
 
-function blogGetPostByUrl(string $url)
+function blogGetPostByUrl(string $url): ?array
 {
     $data = array_filter(
         blogGetPost(),
