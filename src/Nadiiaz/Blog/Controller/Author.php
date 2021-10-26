@@ -8,24 +8,20 @@ use Nadiiaz\Framework\Http\ControllerInterface;
 
 class Author implements ControllerInterface
 {
-    private \Nadiiaz\Framework\Http\Request $request;
+    private \Nadiiaz\Framework\View\Renderer $renderer;
 
     /**
-     * @param \Nadiiaz\Framework\Http\Request $request
+     * @param \Nadiiaz\Framework\View\Renderer $renderer
      */
     public function __construct(
-        \Nadiiaz\Framework\Http\Request $request
+        \Nadiiaz\Framework\View\Renderer $renderer
     ) {
-        $this->request = $request;
+
+        $this->renderer = $renderer;
     }
 
     public function execute(): string
     {
-        $author = $this->request->getParameter('author');
-        $page = 'author.php';
-
-        ob_start();
-        require_once "../src/author.php";
-        return ob_get_clean();
+        return (string) $this->renderer->setContent(\Nadiiaz\Blog\Block\Author::class);
     }
 }

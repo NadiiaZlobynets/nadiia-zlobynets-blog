@@ -1,4 +1,5 @@
 <?php
+/** @var \Nadiiaz\Framework\View\Renderer $this */
     require_once '../src/data.php';
 ?>
 <!DOCTYPE html>
@@ -39,7 +40,7 @@
 </header>
 
 <main>
-    <?php require_once "../src/pages/$page" ?>
+    <?= $this->render($this->getContent())?>
 </main>
 
 <footer>

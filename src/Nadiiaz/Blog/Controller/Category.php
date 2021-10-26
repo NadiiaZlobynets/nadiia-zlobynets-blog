@@ -8,24 +8,20 @@ use Nadiiaz\Framework\Http\ControllerInterface;
 
 class Category implements ControllerInterface
 {
-    private \Nadiiaz\Framework\Http\Request $request;
+    private \Nadiiaz\Framework\View\Renderer $renderer;
 
     /**
-     * @param \Nadiiaz\Framework\Http\Request $request
+     * @param \Nadiiaz\Framework\View\Renderer $renderer
      */
     public function __construct(
-        \Nadiiaz\Framework\Http\Request $request
+        \Nadiiaz\Framework\View\Renderer $renderer
     ) {
-        $this->request = $request;
+
+        $this->renderer = $renderer;
     }
 
     public function execute(): string
     {
-        $category = $this->request->getParameter('category');
-        $page = 'category.php';
-
-        ob_start();
-        require_once "../src/page.php";
-        return ob_get_clean();
+        return (string) $this->renderer->setContent(\Nadiiaz\Blog\Block\Category::class);
     }
 }

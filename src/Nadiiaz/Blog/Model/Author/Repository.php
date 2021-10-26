@@ -25,14 +25,17 @@ class Repository
             1 => $this->makeEntity()
                 ->setAuthorId(1)
                 ->setAuthor('Nadiiaz')
+                ->setUrl('nadiiaz')
                 ->setPostsIds([1, 2, 5]),
             2 => $this->makeEntity()
                 ->setAuthorId(2)
                 ->setAuthor('Vladp')
+                ->setUrl('vladp')
                 ->setPostsIds([3]),
             3 => $this->makeEntity()
                 ->setAuthorId(3)
                 ->setAuthor('Marinah')
+                ->setUrl('marinah')
                 ->setPostsIds([4, 6]),
         ];
     }
