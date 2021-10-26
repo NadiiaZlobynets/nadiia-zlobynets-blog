@@ -14,14 +14,14 @@ class Post implements ControllerInterface
      * @param \Nadiiaz\Framework\Http\Request $request
      */
     public function __construct(
-        \Nadiiaz\Framework\Http\Request  $request
+        \Nadiiaz\Framework\Http\Request $request
     ) {
         $this->request = $request;
     }
 
     public function execute(): string
     {
-        $data = $this->request->getParameter('post');
+        $post = $this->request->getParameter('post');
         $page = 'post.php';
 
         ob_start();

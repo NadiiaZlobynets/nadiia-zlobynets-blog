@@ -1,9 +1,12 @@
+<?php
+/** @var \Nadiiaz\Blog\Model\Post\Entity $post */
+?>
 <div class="post-page">
-    <img src="post-placeholder.png" alt="<?= $data['name']?>" width="300"/>
-    <h1><?= $data['name']?></h1>
-    <p><?= $data['text']?></p>
+    <img src="post-placeholder.png" alt="<?= $post->getName() ?>" width="300"/>
+    <h1><?= $post->getName() ?></h1>
+    <p><?= $post->getDescription() ?></p>
     <div class="post">
-        <p><?= $data['date']?></p>
-        <p><?= $data['author']?></p>
+        <p><?= date('d-m-Y', $post->getDate()) ?></p>
+        <p><?=  $post->getAuthor() ?></p>
     </div>
 </div>

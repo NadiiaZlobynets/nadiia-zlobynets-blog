@@ -6,7 +6,7 @@ namespace Nadiiaz\Blog\Controller;
 
 use Nadiiaz\Framework\Http\ControllerInterface;
 
-class Category implements ControllerInterface
+class Author implements ControllerInterface
 {
     private \Nadiiaz\Framework\Http\Request $request;
 
@@ -21,11 +21,11 @@ class Category implements ControllerInterface
 
     public function execute(): string
     {
-        $category = $this->request->getParameter('category');
-        $page = 'category.php';
+        $author = $this->request->getParameter('author');
+        $page = 'author.php';
 
         ob_start();
-        require_once "../src/page.php";
+        require_once "../src/author.php";
         return ob_get_clean();
     }
 }
