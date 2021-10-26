@@ -7,17 +7,23 @@ namespace Nadiiaz\Blog;
 use Nadiiaz\Blog\Controller\Category;
 use Nadiiaz\Blog\Controller\Post;
 
+
 class Router implements \Nadiiaz\Framework\Http\RouterInterface
 {
     private \Nadiiaz\Framework\Http\Request $request;
 
+    private Model\Category\Repository $categoryRepository;
+
     /**
      * @param \Nadiiaz\Framework\Http\Request $request
+     * @param Model\Category\Repository $categoryRepository
      */
     public function __construct(
-        \Nadiiaz\Framework\Http\Request $request
+        \Nadiiaz\Framework\Http\Request $request,
+        \Nadiiaz\Blog\Model\Category\Repository $categoryRepository
     ){
         $this->request = $request;
+        $this->categoryRepository = $categoryRepository;
     }
 
     /**
@@ -27,8 +33,8 @@ class Router implements \Nadiiaz\Framework\Http\RouterInterface
     {
         require_once '../src/data.php';
 
-        if ($data = blogGetCategoryByUrl($requestUrl)) {
-            $this->request->setParameter('category', $data);
+        if ($category = $this->categoryRepository->getByUrl($requestUrl)) {
+            $this->request->setParameter('category', $category);
             return Category::class;
         }
 
