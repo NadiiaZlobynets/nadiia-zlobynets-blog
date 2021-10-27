@@ -11,8 +11,9 @@
                     <img src="/post-placeholder.png" alt="<?= $author->getAuthor() ?>" width="200"/>
                 </a>
                 <br>
-                <a href="/<?= strtolower($author->getAuthor()) ?>" title="<?=
+                <a href="/<?= $block->getAuthor()->getUrl() ?>" title="<?=
                 $author->getAuthor() ?>"><?= $author->getAuthor()?></a>
+                <p>Author ID:<?= $block->getAuthor()->getAuthorId() ?></p>
                 <p><?= date('d-m-Y', $author->getDate()) ?></p>
             </div>
         <?php endforeach;?>
