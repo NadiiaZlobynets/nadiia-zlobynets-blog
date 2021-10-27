@@ -5,22 +5,26 @@ declare(strict_types=1);
 namespace Nadiiaz\Blog\Controller;
 
 use Nadiiaz\Framework\Http\ControllerInterface;
+use Nadiiaz\Framework\Http\Response\Raw;
 
 class Post implements ControllerInterface
 {
-    private \Nadiiaz\Framework\View\Renderer $renderer;
+    private \Nadiiaz\Framework\View\PageResponse $pageResponse;
 
     /**
-     * @param \Nadiiaz\Framework\View\Renderer $renderer
+     * @param \Nadiiaz\Framework\View\PageResponse $pageResponse
      */
     public function __construct(
-        \Nadiiaz\Framework\View\Renderer $renderer
+        \Nadiiaz\Framework\View\PageResponse $pageResponse
     ) {
-        $this->renderer = $renderer;
+        $this->pageResponse = $pageResponse;
     }
 
-    public function execute(): string
+    /**
+     * @return Raw
+     */
+    public function execute(): Raw
     {
-        return (string) $this->renderer->setContent(\Nadiiaz\Blog\Block\Post::class);
+        return $this->pageResponse->setBody(\Nadiiaz\Blog\Block\Post::class);
     }
 }
