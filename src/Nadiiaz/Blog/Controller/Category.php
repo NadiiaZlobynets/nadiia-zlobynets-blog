@@ -16,7 +16,6 @@ class Category implements ControllerInterface
     public function __construct(
         \Nadiiaz\Framework\View\Renderer $renderer
     ) {
-
         $this->renderer = $renderer;
     }
 

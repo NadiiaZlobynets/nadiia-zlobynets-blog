@@ -40,7 +40,7 @@
 </header>
 
 <main>
-    <?= $this->render($this->getContent())?>
+    <?= $this->render($this->getContent()) ?>
 </main>
 
 <footer>
