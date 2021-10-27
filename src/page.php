@@ -1,6 +1,5 @@
 <?php
 /** @var \Nadiiaz\Framework\View\Renderer $this */
-    require_once '../src/data.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -29,20 +28,12 @@
         <img src="logo.png" alt="nadiiaz logo" width="200"/>
     </a>
     <nav>
-        <ul>
-            <?php foreach (blogGetCategory() as $categoryData) : ?>
-                <li>
-                    <a href="/<?= $categoryData['url']?>"><?= $categoryData['name'] ?></a>
-                </li>
-            <?php endforeach; ?>
-        </ul>
+        <?= $this->render(\Nadiiaz\Blog\Block\CategoryList::class) ?>
     </nav>
 </header>
-
 <main>
     <?= $this->render($this->getContent()) ?>
 </main>
-
 <footer>
     <nav>
         <ul>

@@ -57,26 +57,16 @@ class Repository
     }
 
     /**
-     * @return array
+     * @param array $postIds
+     * @return Entity[]
      */
-    public function getPostsIds(): array
+    public function getByIds(array $postIds)
     {
-        return $this->posts;
+        return array_intersect_key(
+            $this->getList(),
+            array_flip($postIds)
+        );
     }
-
-
-    /**
-     * @param array $posts
-     * @return $this
-     */
-    public function setPostsIds(array $posts): Entity
-    {
-        $this->posts = $posts;
-
-        return $this;
-    }
-
-
     /**
      * @return Entity
      */

@@ -12,7 +12,8 @@
                 <br>
                 <a href="/<?=  $post->getUrl() ?>" title="<?= $post->getName()  ?>"><?= $post->getName()  ?></a>
                 <p><?=  date('d-m-Y', $post->getDate()) ?></p>
-                <p><?= $post->getAuthor() ?></p>
+                <p><a href=" <?= strtolower($post->getAuthor()) ?>"><?= $post->getAuthor() ?></a></p>
+
             </div>
         <?php endforeach;?>
     </div>
