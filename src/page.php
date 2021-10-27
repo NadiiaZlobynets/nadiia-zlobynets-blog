@@ -31,9 +31,11 @@
         <?= $this->render(\Nadiiaz\Blog\Block\CategoryList::class) ?>
     </nav>
 </header>
+
 <main>
-    <?= $this->render($this->getContent()) ?>
+    <?= $this->render($this->getContent(), $this->getContentBlockTemplate()) ?>
 </main>
+
 <footer>
     <nav>
         <ul>

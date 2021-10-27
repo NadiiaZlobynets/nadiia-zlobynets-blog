@@ -55,6 +55,7 @@ class RequestDispatcher
                         "Controller $controller must implement " . ControllerInterface::class
                     );
                 }
+
                 $response = $controller->execute();
             }
         }

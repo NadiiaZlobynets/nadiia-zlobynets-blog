@@ -36,6 +36,7 @@ class Raw
 
     /**
      * @param string $body
+     * @return Raw
      */
     public function setBody(string $body): Raw
     {

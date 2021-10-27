@@ -10,6 +10,8 @@ class Renderer
 
     private string $contentBlockClass;
 
+    private string $contentBlockTemplate;
+
     /**
      * @param \DI\FactoryInterface $factory
      */
@@ -26,13 +28,23 @@ class Renderer
 
     /**
      * @param string $contentBlockClass
-     * return void
+     * @param string $template
+     * @return void
      */
-    public function setContent(string $contentBlockClass): Renderer
+    public function setContent(string $contentBlockClass, string $template = ''): Renderer
     {
         $this->contentBlockClass = $contentBlockClass;
+        $this->contentBlockTemplate = $template;
 
         return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getContentBlockTemplate(): string
+    {
+        return $this->contentBlockTemplate;
     }
 
     /**
@@ -42,7 +54,6 @@ class Renderer
      * @throws \DI\DependencyException
      * @throws \DI\NotFoundException
      */
-
     public function render(string $blockClass, string $template = ''): string
     {
         /** @var Block $block */
@@ -53,7 +64,7 @@ class Renderer
         }
 
         ob_start();
-        require_once $block->getTemplate();
+        require_once $block->getTemplate() ;
         return (string) ob_get_clean();
     }
 

@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Nadiiaz\Framework\View;
 
 use Nadiiaz\Framework\Http\Response\Html;
-use Nadiiaz\Framework\Http\Response\Raw;
 
 class PageResponse extends Html
 {
@@ -22,10 +21,11 @@ class PageResponse extends Html
 
     /**
      * @param string $contentBlockClass
+     * @param string $template
      * @return PageResponse
      */
-    public function setBody(string $contentBlockClass): PageResponse
+    public function setBody(string $contentBlockClass, string $template = ''): PageResponse
     {
-        return parent::setBody((string) $this->renderer->setContent($contentBlockClass));
+        return parent::setBody((string) $this->renderer->setContent($contentBlockClass, $template));
     }
 }

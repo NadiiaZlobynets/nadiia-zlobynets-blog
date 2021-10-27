@@ -15,7 +15,7 @@ class Router implements \Nadiiaz\Framework\Http\RouterInterface
      */
     public function __construct(
         \Nadiiaz\Framework\Http\Request $request
-    ){
+    ) {
         $this->request = $request;
     }
 
@@ -30,9 +30,11 @@ class Router implements \Nadiiaz\Framework\Http\RouterInterface
             'test-page-2'
         ];
         if (in_array($requestUrl, $cmcPage)) {
-            $this->request->getParameter('page', $requestUrl ?: 'home');
+            $this->request->setParameter('page', $requestUrl ?: 'home');
+
             return Page::class;
         }
+
         return '';
     }
 }
