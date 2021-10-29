@@ -5,27 +5,26 @@ declare(strict_types=1);
 namespace Nadiiaz\Blog\Controller;
 
 use Nadiiaz\Framework\Http\ControllerInterface;
+use Nadiiaz\Framework\Http\Response\Raw;
 
 class Category implements ControllerInterface
 {
-    private \Nadiiaz\Framework\Http\Request $request;
+    private \Nadiiaz\Framework\View\PageResponse $pageResponse;
 
     /**
-     * @param \Nadiiaz\Framework\Http\Request $request
+     * @param \Nadiiaz\Framework\View\PageResponse $pageResponse
      */
     public function __construct(
-        \Nadiiaz\Framework\Http\Request  $request
+        \Nadiiaz\Framework\View\PageResponse $pageResponse
     ) {
-        $this->request = $request;
+        $this->pageResponse = $pageResponse;
     }
 
-    public function execute(): string
+    /**
+     * @return Raw
+     */
+    public function execute(): Raw
     {
-        $data = $this->request->getParameter('category');
-        $page = 'category.php';
-
-        ob_start();
-        require_once "../src/page.php";
-        return ob_get_clean();
+        return $this->pageResponse->setBody(\Nadiiaz\Blog\Block\Category::class);
     }
 }

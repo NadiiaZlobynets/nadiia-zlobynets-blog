@@ -5,15 +5,30 @@ declare(strict_types=1);
 namespace Nadiiaz\ContactUs\Controller;
 
 use Nadiiaz\Framework\Http\ControllerInterface;
+use Nadiiaz\Framework\Http\Response\Raw;
+use Nadiiaz\Framework\View\Block;
 
 class Form implements ControllerInterface
 {
-    public function execute(): string
-    {
-        $page = 'contact-us.php';
+    private \Nadiiaz\Framework\View\PageResponse $pageResponse;
 
-        ob_start();
-        require_once "../src/page.php";
-        return ob_get_clean();
+    /**
+     * @param \Nadiiaz\Framework\View\PageResponse $pageResponse
+     */
+    public function __construct(
+        \Nadiiaz\Framework\View\PageResponse $pageResponse
+    ) {
+        $this->pageResponse = $pageResponse;
+    }
+
+    /**
+     * @return Raw
+     */
+    public function execute(): Raw
+    {
+        return $this->pageResponse->setBody(
+            Block::class,
+            '../src/Nadiiaz/ContactUs/view/contact-us.php'
+        );
     }
 }

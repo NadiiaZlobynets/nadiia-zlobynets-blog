@@ -7,7 +7,7 @@ namespace Nadiiaz\Blog\Controller;
 use Nadiiaz\Framework\Http\ControllerInterface;
 use Nadiiaz\Framework\Http\Response\Raw;
 
-class Post implements ControllerInterface
+class Author implements ControllerInterface
 {
     private \Nadiiaz\Framework\View\PageResponse $pageResponse;
 
@@ -25,6 +25,6 @@ class Post implements ControllerInterface
      */
     public function execute(): Raw
     {
-        return $this->pageResponse->setBody(\Nadiiaz\Blog\Block\Post::class);
+        return $this->pageResponse->setBody(\Nadiiaz\Blog\Block\Author::class);
     }
 }
