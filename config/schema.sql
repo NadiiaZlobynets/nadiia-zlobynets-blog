@@ -31,60 +31,9 @@ CREATE TABLE `author` (
      `firstname` varchar(127) DEFAULT NULL COMMENT 'First Name',
      `lastname` varchar(127) DEFAULT NULL COMMENT 'Last Name',
      `url` varchar(127) DEFAULT NULL COMMENT 'URL',
-     `image` varchar(127) DEFAULT NULL COMMENT 'IMG',
      `description` varchar(4095) DEFAULT NULL COMMENT 'Description',
      PRIMARY KEY (`author_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='Author Entity';
-#---
-CREATE TABLE `author_post` (
-    `author_post_id` int unsigned NOT NULL AUTO_INCREMENT COMMENT 'ID',
-    `author_id` int unsigned DEFAULT NULL COMMENT 'Author ID',
-    `post_id` int unsigned DEFAULT NULL COMMENT 'Post ID',
-    PRIMARY KEY (`author_post_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='Author Post';
-#---
-ALTER TABLE `author_post`
-    ADD CONSTRAINT `FK_AUTHOR_POST_AUTHOR_ID` FOREIGN KEY `author` (`author_id`)
-        REFERENCES `author` (`author_id`) ON DELETE CASCADE,
-    ADD CONSTRAINT `FK_AUTHOR_POST_POST_ID` FOREIGN KEY `post `(`post_id`)
-        REFERENCES `post` (`post_id`) ON DELETE CASCADE;
-#---
--- INSERT INTO `author_post` (`author_id`, `post_id`)
--- VALUES (1, 15), (2, 14), (3, 13), (4, 12),
---        (5, 11), (6, 10), (7, 9), (8, 8),
---        (9, 4), (10, 6, (11, 6), (12, 7),
---        (13, 3), (14, 2), (15, 1);
--- #---
-CREATE TABLE `category_post` (
-    `category_post_id` int unsigned NOT NULL AUTO_INCREMENT COMMENT 'ID',
-    `post_id` int unsigned NOT NULL COMMENT 'Post ID',
-    `category_id` int unsigned NOT NULL COMMENT 'Category ID',
-    PRIMARY KEY (`category_post_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='Category Post';
-#---
-ALTER TABLE `category_post`
-    ADD CONSTRAINT `FK_CATEGORY_POST_CATEGORY_ID` FOREIGN KEY `category` (`category_id`)
-        REFERENCES `category` (`category_id`) ON DELETE CASCADE,
-    ADD CONSTRAINT `FK_CATEGORY_POST_POST_ID` FOREIGN KEY `post` (`post_id`)
-        REFERENCES `post` (`post_id`) ON DELETE CASCADE;
-#---
-CREATE TABLE `daily_statistics` (
-    `daily_statistics_id` int unsigned NOT NULL AUTO_INCREMENT COMMENT 'ID',
-    `post_id` int unsigned NOT NULL COMMENT 'Post ID',
-    `date` int unsigned NOT NULL COMMENT 'Date',
-    `views` smallint DEFAULT NULL COMMENT 'Views',
-    PRIMARY KEY (`daily_statistics_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='Daily Statistics';
-#---
--- ALTER TABLE `daily_statistics`
---     ADD CONSTRAINT `FK_DAILY_STATISTICS_ID` FOREIGN KEY (`daily_statistics_id`)
---         REFERENCES daily_statistics(`daily_statistics_id`) ON DELETE CASCADE,
---     ADD CONSTRAINT `FK_DAILY_STATISTICS_POST_ID` FOREIGN KEY `post_id`
---         REFERENCES `post` (`post_id`) ON DELETE CASCADE;
--- #---
--- INSERT INTO `daily_statistics` (`post_id`, `date`, views)
--- VALUES (1, 1636126765, 21),
---        (2, 1526729821, 15)
 #---
 INSERT INTO `post` (`name`, `url`, `description`, `date`)
 VALUES ('Post 1', 'post-1', 'Lorem ipsum dolor sit amet', 1636126765),
@@ -120,19 +69,82 @@ VALUES ('Lifestyle', 'lifestyle'),
        ('Art', 'art'),
        ('Music', 'music');
 #---
-INSERT INTO `author` (`firstname`, `lastname`)
-VALUES ('Anastasia', 'Blick'),
-       ('Maude', 'Walter'),
-       ('Jonas', 'Towne'),
-       ('Delpha', 'Gulgowski'),
-       ('Rae', 'Heathcote'),
-       ('Joelle', 'Steuber'),
-       ('Domingo', 'Derick'),
-       ('Myra', 'Paucek'),
-       ('Werner', 'Crona'),
-       ('Daphnee', 'Schamberger'),
-       ('Violette', 'Gutmann'),
-       ('Ramon', 'Hoppe'),
-       ('Sigrid', 'Morissette'),
-       ('Claudia', 'Koelpin'),
-       ('Kraig', 'Schimmel');
+INSERT INTO `author` (`firstname`, `lastname`, `url`, `description`)
+VALUES ('Anastasia', 'Blick', 'anastasia-blick', 'Lorem ipsum dolor sit amet'),
+       ('Maude', 'Walter', 'maude-walter', 'Lorem ipsum dolor sit amet'),
+       ('Jonas', 'Towne', 'jonas-towne', 'Lorem ipsum dolor sit amet'),
+       ('Delpha', 'Gulgowski', 'delpha-guldowski', 'Lorem ipsum dolor sit amet'),
+       ('Rae', 'Heathcote', 'rae-heathcote', 'Lorem ipsum dolor sit amet'),
+       ('Joelle', 'Steuber', 'joelle-steuber', 'Lorem ipsum dolor sit amet'),
+       ('Domingo', 'Derick', 'domigo-derick', 'Lorem ipsum dolor sit amet'),
+       ('Myra', 'Paucek', 'myra-paucek', 'Lorem ipsum dolor sit amet'),
+       ('Werner', 'Crona', 'werner-crona', 'Lorem ipsum dolor sit amet'),
+       ('Daphnee', 'Schamberger', 'daphnee-schamberger', 'Lorem ipsum dolor sit amet'),
+       ('Violette', 'Gutmann', 'violette-gutmann', 'Lorem ipsum dolor sit amet'),
+       ('Ramon', 'Hoppe', 'ramon-hoppe', 'Lorem ipsum dolor sit amet'),
+       ('Sigrid', 'Morissette', 'sigrid-morissette', 'Lorem ipsum dolor sit amet'),
+       ('Claudia', 'Koelpin', 'claudia-koelpin', 'Lorem ipsum dolor sit amet'),
+       ('Kraig', 'Schimmel', 'kraig-schimmel', 'Lorem ipsum dolor sit amet');
+#---
+CREATE TABLE `category_post` (
+    `category_post_id` int unsigned NOT NULL AUTO_INCREMENT COMMENT 'ID',
+    `post_id` int unsigned NOT NULL COMMENT 'Post ID',
+    `category_id` int unsigned NOT NULL COMMENT 'Category ID',
+    PRIMARY KEY (`category_post_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='Category Post';
+#---
+ALTER TABLE `category_post`
+    ADD CONSTRAINT `FK_CATEGORY_POST_CATEGORY0_ID` FOREIGN KEY `category` (`category_id`)
+    REFERENCES `category` (`category_id`) ON DELETE CASCADE,
+    ADD CONSTRAINT `FK_CATEGORY0_POST_POST_ID` FOREIGN KEY `post` (`post_id`)
+        REFERENCES `post` (`post_id`) ON DELETE CASCADE;
+#---
+INSERT INTO `category_post` (`category_id`, `post_id`)
+VALUES (1, 1), (1, 2), (1, 3), (1, 4),
+       (2, 2), (2, 3), (2, 4), (2, 5),
+       (3, 9), (3, 4), (3, 5), (3, 6),
+       (4, 13), (4, 12), (4, 11), (4, 10),
+       (5, 9), (6, 4), (7, 5), (8, 6),
+       (9, 9), (10, 4), (11, 5), (12, 6),
+       (14, 15), (15, 4), (5, 6);
+#---
+CREATE TABLE `author_post` (
+    `author_post_id` int unsigned NOT NULL AUTO_INCREMENT COMMENT 'ID',
+    `author_id` int unsigned DEFAULT NULL COMMENT 'Author ID',
+    `post_id` int unsigned DEFAULT NULL COMMENT 'Post ID',
+    PRIMARY KEY (`author_post_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='Author Post';
+#---
+ALTER TABLE `author_post`
+    ADD CONSTRAINT `FK_AUTHOR0_POST_AUTHOR_ID` FOREIGN KEY `author` (`author_id`)
+        REFERENCES `author` (`author_id`) ON DELETE CASCADE,
+    ADD CONSTRAINT `FK_AUTHOR0_POST_POST_ID` FOREIGN KEY `post `(`post_id`)
+        REFERENCES `post` (`post_id`) ON DELETE CASCADE;
+#---
+INSERT INTO `author_post` (`author_id`, `post_id`)
+VALUES (1, 1), (1, 2), (1, 3), (1, 4),
+       (2, 2), (2, 3), (2, 4), (2, 5),
+       (3, 9), (3, 4), (3, 5), (3, 6),
+       (4, 13), (4, 12), (4, 11), (4, 10),
+       (5, 9), (6, 4), (7, 5), (8, 6),
+       (9, 9), (10, 4), (11, 5), (12, 6),
+       (14, 15), (15, 4), (5, 6);
+-- #---
+-- CREATE TABLE `daily_statistics` (
+--     `daily_statistics_id` int unsigned NOT NULL AUTO_INCREMENT COMMENT 'ID',
+--     `post_id` int unsigned DEFAULT NULL COMMENT 'Post ID',
+--     `date` int unsigned NOT NULL COMMENT 'Date',
+--     `views` smallint DEFAULT NULL COMMENT 'Views',
+--     PRIMARY KEY (`daily_statistics_id`)
+-- ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='Daily Statistics';
+-- #---
+-- ALTER TABLE `daily_statistics`
+--     ADD CONSTRAINT `FK_DAILY_STATISTICS0_ID` FOREIGN KEY `daily_statistics` (`daily_statistics_id`)
+--     REFERENCES daily_statistics(`daily_statistics_id`) ON DELETE CASCADE,
+--     ADD CONSTRAINT `FK_DAILY_STATISTICS0_POST_ID` FOREIGN KEY `post `(`post_id`)
+--         REFERENCES `post` (`post_id`) ON DELETE CASCADE;
+-- #---
+-- INSERT INTO `daily_statistics` (`post_id`, `date`, `views`)
+-- VALUES (1, 1636126765, 21),
+--        (2, 1526729821, 15);
+
