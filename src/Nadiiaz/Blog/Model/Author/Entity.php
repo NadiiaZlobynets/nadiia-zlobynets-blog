@@ -8,9 +8,9 @@ class Entity
 {
     private int $authorId;
 
-    private string $url;
+    private string $authorUrl;
 
-    private string $author;
+    private string $authorName;
 
     private array $posts;
 
@@ -33,36 +33,17 @@ class Entity
         return $this;
     }
 
-    public function getUrl(): string
+    public function getAuthorName(): string
     {
-        return $this->url;
-    }
-
-    /**
-     * @param string $url
-     * @return $this
-     */
-    public function setUrl(string $url): Entity
-    {
-        $this->url = $url;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getAuthor(): string
-    {
-        return $this->author;
+        return $this->authorName;
     }
 
     /**
      * @param string $author
      */
-    public function setAuthor(string $author): Entity
+    public function setAuthorName(string $authorName): Entity
     {
-        $this->author = $author;
+        $this->authorName = $authorName;
 
         return $this;
     }
@@ -82,6 +63,25 @@ class Entity
     public function setPostsIds(array $posts): Entity
     {
         $this->posts = $posts;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAuthorUrl(): string
+    {
+        return $this->authorUrl;
+    }
+
+    /**
+     * @param string $authorUrl
+     * @return Entity
+     */
+    public function setAuthorUrl(string $authorUrl): Entity
+    {
+        $this->authorUrl = $authorUrl;
 
         return $this;
     }

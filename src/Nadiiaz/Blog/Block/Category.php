@@ -36,12 +36,28 @@ class Category extends \Nadiiaz\Framework\View\Block
     }
 
     /**
+    <div class="post-list">
+        <?php foreach ($block->getAuthorP
      * @return PostEntity[]
+     * @throws \DI\DependencyException
+     * @throws \DI\NotFoundException
      */
     public function getCategoryPosts(): array
     {
         return $this->postRepository->getByIds(
             $this->getCategory()->getPostsIds()
+        );
+    }
+
+    /**
+     * @return PostEntity[]
+     * @throws \DI\DependencyException
+     * @throws \DI\NotFoundException
+     */
+    public function getAuthorPosts(): array
+    {
+        return $this->postRepository->getByIds(
+            $this->getCategory()->getByAuthorId()
         );
     }
 }

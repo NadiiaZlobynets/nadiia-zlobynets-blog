@@ -91,4 +91,24 @@ class Entity
 
         return $this;
     }
+
+    /**
+     * @return array
+     */
+    public function getByAuthorId(): array
+    {
+        return $this->posts;
+    }
+
+
+    /**
+     * @param array $posts
+     * @return $this
+     */
+    public function setByAuthorId(array $posts): Entity
+    {
+        $this->posts = $posts;
+
+        return $this;
+    }
 }

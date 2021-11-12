@@ -42,21 +42,23 @@ class Author extends \Nadiiaz\Framework\View\Block
 
     /**
      * @return PostEntity[]
+     * @throws \DI\DependencyException
+     * @throws \DI\NotFoundException
      */
-    public function getCategoryPosts(): array
+    public function getAuthorPosts(): array
     {
         return $this->postRepository->getByIds(
             $this->getAuthor()->getPostsIds()
         );
     }
 
-//    /**
-//     * @return AuthorEntity[]
-//     */
-//    public function getAuthorByPostId(): array
-//    {
-//        return $this->authorRepository ->getByIds(
-//            $this->getAuthor()->getPostsIds()
-//        );
-//    }
+    /**
+     * @return AuthorEntity[]
+     * @throws \DI\DependencyException
+     * @throws \DI\NotFoundException
+     */
+    public function getPostsByAuthorId(): array
+    {
+        return $this->authorRepository->getList();
+    }
 }

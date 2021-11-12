@@ -9,11 +9,11 @@
                 <a href="/<?= $post->getUrl() ?>" title="<?= $post->getName() ?>">
                     <img src="/post-placeholder.png" alt="<?= $post->getName()  ?>" width="200"/>
                 </a>
-                <br>
-                <a href="/<?=  $post->getUrl() ?>" title="<?= $post->getName()  ?>"><?= $post->getName()  ?></a>
+                <brf>
+                <a href="/<?=  $post->getUrl() ?>" title="<?= $post->getName()  ?>">
+                    <?= $post->getName()  ?></a>
                 <p><?=  date('d-m-Y', $post->getDate()) ?></p>
-                <p><a href=" <?= strtolower($post->getAuthor()) ?>"><?= $post->getAuthor() ?></a></p>
-
+                <p><a href=" <?= $post->getAuthorPostsUrl() ?>"><?= $post->getAuthor() ?></a></p>
             </div>
         <?php endforeach;?>
     </div>
