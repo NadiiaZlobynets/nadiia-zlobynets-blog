@@ -129,22 +129,20 @@ VALUES (1, 1), (1, 2), (1, 3), (1, 4),
        (5, 9), (6, 4), (7, 5), (8, 6),
        (9, 9), (10, 4), (11, 5), (12, 6),
        (14, 15), (15, 4), (5, 6);
--- #---
--- CREATE TABLE `daily_statistics` (
---     `daily_statistics_id` int unsigned NOT NULL AUTO_INCREMENT COMMENT 'ID',
---     `post_id` int unsigned DEFAULT NULL COMMENT 'Post ID',
---     `date` int unsigned NOT NULL COMMENT 'Date',
---     `views` smallint DEFAULT NULL COMMENT 'Views',
---     PRIMARY KEY (`daily_statistics_id`)
--- ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='Daily Statistics';
--- #---
--- ALTER TABLE `daily_statistics`
---     ADD CONSTRAINT `FK_DAILY_STATISTICS0_ID` FOREIGN KEY `daily_statistics` (`daily_statistics_id`)
---     REFERENCES daily_statistics(`daily_statistics_id`) ON DELETE CASCADE,
---     ADD CONSTRAINT `FK_DAILY_STATISTICS0_POST_ID` FOREIGN KEY `post `(`post_id`)
---         REFERENCES `post` (`post_id`) ON DELETE CASCADE;
--- #---
--- INSERT INTO `daily_statistics` (`post_id`, `date`, `views`)
--- VALUES (1, 1636126765, 21),
---        (2, 1526729821, 15);
+#---
+CREATE TABLE `daily_statistics` (
+    `daily_statistics_id` int unsigned NOT NULL AUTO_INCREMENT COMMENT 'ID',
+    `post_id` int unsigned DEFAULT NULL COMMENT 'Post ID',
+    `date` int unsigned NOT NULL COMMENT 'Date',
+    `views` smallint DEFAULT NULL COMMENT 'Views',
+    PRIMARY KEY (`daily_statistics_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='Daily Statistics';
+#---
+ALTER TABLE `daily_statistics`
+    ADD CONSTRAINT `FK_DAILY_STATISTICS0_POST_ID` FOREIGN KEY `post `(`post_id`)
+        REFERENCES `post` (`post_id`) ON DELETE CASCADE;
+#---
+INSERT INTO `daily_statistics` (`post_id`, `date`, `views`)
+VALUES (1, 1636126765, 21),
+       (2, 1526729821, 15);
 
