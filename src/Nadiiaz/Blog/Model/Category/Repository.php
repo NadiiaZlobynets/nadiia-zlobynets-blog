@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Nadiiaz\Blog\Model\Category;
@@ -6,6 +7,8 @@ namespace Nadiiaz\Blog\Model\Category;
 class Repository
 {
     private \DI\FactoryInterface $factory;
+
+    public const TABLE = 'category';
 
     /**
      * @param \DI\FactoryInterface $factory

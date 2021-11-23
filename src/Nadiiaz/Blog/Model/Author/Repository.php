@@ -8,6 +8,10 @@ class Repository
 {
     private \DI\FactoryInterface $factory;
 
+    public const TABLE = 'author';
+
+    public const TABLE_AUTHOR_POST = 'author_post';
+
     /**
      * @param \DI\FactoryInterface $factory
      */

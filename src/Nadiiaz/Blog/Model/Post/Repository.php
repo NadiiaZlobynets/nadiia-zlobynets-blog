@@ -8,6 +8,10 @@ class Repository
 {
     private \DI\FactoryInterface $factory;
 
+    public const TABLE = 'post';
+
+    public const TABLE_CATEGORY_POST = 'category_post';
+
     /**
      * @param \DI\FactoryInterface $factory
      */
