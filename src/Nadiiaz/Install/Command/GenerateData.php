@@ -241,7 +241,7 @@ class GenerateData extends \Symfony\Component\Console\Command\Command
 
         for ($i = 1; $i <= self::POSTS_COUNT; $i++) {
             $statement->bindValue(':post_id', $i);
-            $statement->bindValue(':date', random_int(1633046400, 1635724800));
+            $statement->bindValue(':date', date('Y-m-d', random_int(1633046400, 1635724800)));
             $statement->bindValue(':views', random_int(0, 1000000));
         }
     }

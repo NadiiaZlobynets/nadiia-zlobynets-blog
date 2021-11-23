@@ -15,7 +15,7 @@ CREATE TABLE `post` (
    `name` varchar(127) NOT NULL COMMENT 'Name',
    `url` varchar(127) NOT NULL COMMENT 'URL',
    `description` varchar(4095) DEFAULT NULL COMMENT 'Description',
-   `date` int unsigned NOT NULL COMMENT 'Date',
+   `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'Date',
     PRIMARY KEY (`post_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='Post Entity';
 #---
@@ -133,7 +133,7 @@ VALUES (1, 1), (1, 2), (1, 3), (1, 4),
 CREATE TABLE `daily_statistics` (
     `daily_statistics_id` int unsigned NOT NULL AUTO_INCREMENT COMMENT 'ID',
     `post_id` int unsigned DEFAULT NULL COMMENT 'Post ID',
-    `date` int unsigned NOT NULL COMMENT 'Date',
+    `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'Date',
     `views` smallint DEFAULT NULL COMMENT 'Views',
     PRIMARY KEY (`daily_statistics_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='Daily Statistics';
