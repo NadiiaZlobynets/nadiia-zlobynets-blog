@@ -15,7 +15,7 @@ CREATE TABLE `post` (
    `name` varchar(127) NOT NULL COMMENT 'Name',
    `url` varchar(127) NOT NULL COMMENT 'URL',
    `description` varchar(4095) DEFAULT NULL COMMENT 'Description',
-   `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+   `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'Date',
     PRIMARY KEY (`post_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='Post Entity';
 #---
@@ -70,21 +70,21 @@ VALUES ('Lifestyle', 'lifestyle'),
        ('Music', 'music');
 #---
 INSERT INTO `author` (`firstname`, `lastname`, `url`, `description`)
-VALUES ('Anastasia', 'Blick', 'anastasia-blick', 'Lorem ipsum dolor sit amet')),
-       ('Maude', 'Walter', 'maude-walter', 'Lorem ipsum dolor sit amet')),
-       ('Jonas', 'Towne', 'jonas-towne', 'Lorem ipsum dolor sit amet')),
-       ('Delpha', 'Gulgowski', 'delpha-guldowski', 'Lorem ipsum dolor sit amet')),
-       ('Rae', 'Heathcote', 'rae-heathcote', 'Lorem ipsum dolor sit amet')),
-       ('Joelle', 'Steuber', 'joelle-steuber', 'Lorem ipsum dolor sit amet')),
-       ('Domingo', 'Derick', 'domigo-derick', 'Lorem ipsum dolor sit amet')),
-       ('Myra', 'Paucek', 'myra-paucek', 'Lorem ipsum dolor sit amet')),
-       ('Werner', 'Crona', 'werner-crona', 'Lorem ipsum dolor sit amet')),
-       ('Daphnee', 'Schamberger', 'daphnee-schamberger', 'Lorem ipsum dolor sit amet')),
-       ('Violette', 'Gutmann', 'violette-gutmann', 'Lorem ipsum dolor sit amet')),
-       ('Ramon', 'Hoppe', 'ramon-hoppe', 'Lorem ipsum dolor sit amet')),
-       ('Sigrid', 'Morissette', 'sigrid-morissette', 'Lorem ipsum dolor sit amet')),
-       ('Claudia', 'Koelpin', 'claudia-koelpin', 'Lorem ipsum dolor sit amet')),
-       ('Kraig', 'Schimmel', 'kraig-schimmel', 'Lorem ipsum dolor sit amet'));
+VALUES ('Anastasia', 'Blick', 'anastasia-blick', 'Lorem ipsum dolor sit amet'),
+       ('Maude', 'Walter', 'maude-walter', 'Lorem ipsum dolor sit amet'),
+       ('Jonas', 'Towne', 'jonas-towne', 'Lorem ipsum dolor sit amet'),
+       ('Delpha', 'Gulgowski', 'delpha-guldowski', 'Lorem ipsum dolor sit amet'),
+       ('Rae', 'Heathcote', 'rae-heathcote', 'Lorem ipsum dolor sit amet'),
+       ('Joelle', 'Steuber', 'joelle-steuber', 'Lorem ipsum dolor sit amet'),
+       ('Domingo', 'Derick', 'domigo-derick', 'Lorem ipsum dolor sit amet'),
+       ('Myra', 'Paucek', 'myra-paucek', 'Lorem ipsum dolor sit amet'),
+       ('Werner', 'Crona', 'werner-crona', 'Lorem ipsum dolor sit amet'),
+       ('Daphnee', 'Schamberger', 'daphnee-schamberger', 'Lorem ipsum dolor sit amet'),
+       ('Violette', 'Gutmann', 'violette-gutmann', 'Lorem ipsum dolor sit amet'),
+       ('Ramon', 'Hoppe', 'ramon-hoppe', 'Lorem ipsum dolor sit amet'),
+       ('Sigrid', 'Morissette', 'sigrid-morissette', 'Lorem ipsum dolor sit amet'),
+       ('Claudia', 'Koelpin', 'claudia-koelpin', 'Lorem ipsum dolor sit amet'),
+       ('Kraig', 'Schimmel', 'kraig-schimmel', 'Lorem ipsum dolor sit amet');
 #---
 CREATE TABLE `category_post` (
     `category_post_id` int unsigned NOT NULL AUTO_INCREMENT COMMENT 'ID',
