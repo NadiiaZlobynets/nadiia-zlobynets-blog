@@ -8,6 +8,10 @@ class Repository
 {
     private \DI\FactoryInterface $factory;
 
+    public const TABLE = 'author';
+
+    public const TABLE_AUTHOR_POST = 'author_post';
+
     /**
      * @param \DI\FactoryInterface $factory
      */
@@ -18,24 +22,26 @@ class Repository
 
     /**
      * @return \Nadiiaz\Blog\Model\Author\Entity[]
+     * @throws \DI\DependencyException
+     * @throws \DI\NotFoundException
      */
     public function getList(): array
     {
         return [
             1 => $this->makeEntity()
                 ->setAuthorId(1)
-                ->setAuthor('Nadiiaz')
-                ->setUrl('nadiiaz')
+                ->setAuthorName('Nadiiaz')
+                ->setAuthorUrl('nadiiaz')
                 ->setPostsIds([1, 2, 5]),
             2 => $this->makeEntity()
                 ->setAuthorId(2)
-                ->setAuthor('Vladp')
-                ->setUrl('vladp')
+                ->setAuthorName('Vladp')
+                ->setAuthorUrl('vladp')
                 ->setPostsIds([3]),
             3 => $this->makeEntity()
                 ->setAuthorId(3)
-                ->setAuthor('Marinah')
-                ->setUrl('marinah')
+                ->setAuthorName('Marinah')
+                ->setAuthorUrl('mariiah')
                 ->setPostsIds([4, 6]),
         ];
     }
@@ -43,32 +49,38 @@ class Repository
     /**
      * @param string $url
      * @return ?Entity
+     * @throws \DI\DependencyException
+     * @throws \DI\NotFoundException
      */
     public function getByUrl(string $url): ?Entity
     {
         $data = array_filter(
             $this->getList(),
             static function ($post) use ($url) {
-                return $post->getUrl() === $url;
+                return $post->getAuthorUrl() === $url;
             }
         );
-
         return array_pop($data);
     }
 
     /**
-     * @param array $postIds
+     * @param array $authorIds
      * @return Entity[]
+     * @throws \DI\DependencyException
+     * @throws \DI\NotFoundException
      */
-    public function getByIds(array $postIds)
+    public function getByAuthorId(array $authorIds): array
     {
         return array_intersect_key(
             $this->getList(),
-            array_flip($postIds)
+            array_flip($authorIds)
         );
     }
+
     /**
      * @return Entity
+     * @throws \DI\DependencyException
+     * @throws \DI\NotFoundException
      */
     private function makeEntity(): Entity
     {

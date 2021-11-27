@@ -18,6 +18,10 @@ class Entity
 
     private string $author;
 
+    private int $authorId;
+
+    private string $authorPostsUrl;
+
     /**
      * @return int
      */
@@ -127,5 +131,43 @@ class Entity
     public function getAuthor(): string
     {
         return $this->author;
+    }
+
+    /**
+     * @return int
+     */
+    public function getAuthorId(): int
+    {
+        return $this->authorId;
+    }
+
+    /**
+     * @param int $authorId
+     * @return Entity
+     */
+    public function setAuthorId(int $authorId): Entity
+    {
+        $this->authorId = $authorId;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAuthorPostsUrl(): string
+    {
+        return $this->authorPostsUrl;
+    }
+
+    /**
+     * @param string $authorPostsUrl
+     * @return Entity
+     */
+    public function setAuthorPostsUrl(string $authorPostsUrl): Entity
+    {
+        $this->authorPostsUrl = $authorPostsUrl;
+
+        return $this;
     }
 }
